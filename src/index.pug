@@ -1,0 +1,42 @@
+doctype html
+html(lang="ru-RU")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+    title #{title}
+    meta(property="og:title", content=title)
+    meta(name="twitter:title", content=title)
+    meta(name="description", content=description)
+    meta(property="og:description", content=description)
+    meta(name="twitter:description", content=description)
+    meta(name="author", content=author)
+    meta(property="og:site_name", content=siteName)
+    meta(property="og:url", content=url)
+    meta(property="og:type", content="website")
+    meta(name="twitter:card", content="summary")
+    link(rel="shortcut icon", href="favicon.png", type="image/png")
+    link(rel="stylesheet", href="style.css", media="all")
+    script(defer, src="fontawesome.js")
+  body
+    div.flag
+    div.main(role="main")
+      article.article.about
+        section.author
+          div.author-name #{author}
+          p.custom-subtitle !{subtitle}
+          div.author-avatar-wrapper
+            div.author-avatar(style=`background-image: url(${avatar});`)
+          ul.author-social
+            each val in social
+              li
+                a(href=val.href, target="_blank")
+                  i(class=val.classes)
+          if other
+            div.author-social-other-container
+              ul.author-social-other
+                each val in other
+                  li.other !{val.content}
+        hr
+    div.site-footer
+      div.powerdby.
+        Powered by #[a(href="https://github.com/taikii/whiteplain", target="_blank") Whiteplain]
